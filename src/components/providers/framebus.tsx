@@ -19,6 +19,7 @@ export const FramebusProvider: FunctionComponent<PropsWithChildren> = ({
   children,
 }) => {
   useEffect(() => {
+    console.info('useEffect framebus');
     framebus.connect();
     framebus.emit('ready');
 

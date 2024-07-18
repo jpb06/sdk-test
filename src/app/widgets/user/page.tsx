@@ -9,6 +9,7 @@ const UserWidgetPage: FunctionComponent = () => {
   const framebus = useFramebusContext();
 
   const handleClick = () => {
+    console.info('emitting user.action event ...');
     framebus.emit('user.action', {
       type: 'yolo',
       payload: {
@@ -52,7 +53,15 @@ const UserWidgetPage: FunctionComponent = () => {
         >
           User widget
         </styled.h1>
-        <button onClick={handleClick}>Action</button>
+        <styled.button
+          onClick={handleClick}
+          css={{
+            padding: 2,
+            backgroundColor: 'red.300',
+          }}
+        >
+          Action
+        </styled.button>
       </Box>
     </Stack>
   );
