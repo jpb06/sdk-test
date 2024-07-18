@@ -1,0 +1,45 @@
+{
+  "name": "sdk-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "update-deps": "bunx npm-check-updates --root --format group -i",
+    "prepare": "panda codegen",
+    "dev": "next dev",
+    "build": "next build",
+    "build-sdk": "esbuild ./src/sdk/index.ts --bundle --minify --outfile=./public/libs/sdk.min.js",
+    "build-sdk-dev": "esbuild ./src/sdk/index.ts --bundle --outfile=./public/libs/sdk.js",
+    "start": "next start",
+    "lint": "bun eslint ./",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^2.3.0",
+    "@pandacss/dev": "^0.42.0",
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "esbuild": "^0.23.0",
+    "eslint": "^9",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.8.0",
+    "postcss": "^8.4.39",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.16.1"
+  }
+}

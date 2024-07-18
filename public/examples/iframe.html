@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Iframe example</title>
+  </head>
+  <body>
+    <div style="flex-direction: column; width: full">
+      <h1>Iframe example</h1>
+      <div style="flex-direction: row; align-items: center">
+        <div id="my-widget"></div>
+      </div>
+    </div>
+    <script src="/libs/sdk.min.js"></script>
+    <script>
+      const widget = new window.WidgetSdk({
+        baseUrl: "http://localhost:3000",
+        frameHeight: 600,
+        frameWidth: 900,
+        theme: "neutral",
+        token: "my-token",
+        type: "book-details",
+      });
+
+      widget.init("my-widget");
+    </script>
+  </body>
+</html>
