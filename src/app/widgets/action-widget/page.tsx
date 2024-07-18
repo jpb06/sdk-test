@@ -2,8 +2,10 @@ import { FunctionComponent } from 'react';
 
 import { Box, Stack, styled } from '@panda/jsx';
 
-const BookDetailsPage: FunctionComponent = () => (
-  <div>
+const ActionWidgetPage: FunctionComponent = () => {
+  const handleClick = () => {};
+
+  return (
     <Stack
       css={{
         gap: 8,
@@ -31,8 +33,10 @@ const BookDetailsPage: FunctionComponent = () => (
         >
           Book details
         </styled.h1>
+        <button onClick={handleClick}></button>
       </Box>
     </Stack>
-  </div>
-);
-export default BookDetailsPage;
+  );
+};
+
+export default ActionWidgetPage;
