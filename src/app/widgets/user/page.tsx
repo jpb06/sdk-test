@@ -23,7 +23,7 @@ const UserWidgetPage: FunctionComponent = () => {
 
   useEffect(() => {
     framebus.on('user.get', ({ id }) => {
-      console.info('user.get event fired with id', id);
+      console.info(`user.get event fired with id ${id}`);
       setUserId(id);
     });
   }, [framebus]);

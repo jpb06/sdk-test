@@ -145,7 +145,10 @@ export class Framebus {
       payload: this.parsePayload(eventName, payload),
     };
 
-    this.targetWindow.postMessage(message, this.origin);
+    // Issue -> We may call emit from a js file so we can't use window.origin
+    // Related error:
+    // Unable to post message to file://. Recipient has origin https://sdk-test-git-main-jpb06s-projects.vercel.app.
+    this.targetWindow.postMessage(message, '*'); //this.origin);
   }
 
   /**

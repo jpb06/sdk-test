@@ -4048,7 +4048,7 @@
         type: eventName,
         payload: this.parsePayload(eventName, payload)
       };
-      this.targetWindow.postMessage(message, this.origin);
+      this.targetWindow.postMessage(message, "*");
     }
     /**
      * Sends a message and registers a handler to listen for the response.
