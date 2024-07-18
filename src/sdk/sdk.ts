@@ -1,6 +1,12 @@
 import { SdkError } from './error';
+import type {
+  FramebusEventListener,
+  FramebusEventName,
+  FramebusEventPayload,
+} from './framebus';
+import { Framebus } from './framebus';
 
-interface WidgetOptions {
+type WidgetOptions = {
   baseUrl?: string;
   frameHeight?: number;
   frameWidth?: number;
@@ -8,10 +14,11 @@ interface WidgetOptions {
   token?: string;
   theme: string;
   type?: string;
-}
+};
 
 export default class WidgetSdk {
-  private readonly options: WidgetOptions;
+  private options: WidgetOptions;
+  private framebus: Framebus;
 
   public constructor(options: WidgetOptions) {
     if (options.token === undefined) {
@@ -26,10 +33,11 @@ export default class WidgetSdk {
       frameHeight: 600,
       frameWidth: 900,
       locale: 'fr',
-      theme: 'default',
+      theme: 'light',
     };
 
     this.options = Object.assign(defaults, options);
+    this.framebus = new Framebus();
   }
 
   public init(elementId: string) {
@@ -47,6 +55,28 @@ export default class WidgetSdk {
     frame.width = String(frameWidth);
 
     element.replaceChildren(frame);
+
+    this.framebus.connect(frame, window.origin);
+  }
+
+  public on<TEventName extends FramebusEventName>(
+    eventName: TEventName,
+    listener: FramebusEventListener<TEventName>,
+  ) {
+    this.framebus.on(eventName, listener);
+  }
+
+  public emit<TEventName extends FramebusEventName>(
+    eventName: TEventName,
+    payload: FramebusEventPayload<TEventName>,
+  ) {
+    if (!this.framebus.isConnected) {
+      throw new SdkError(
+        'Cannot use the `emit()` method because the widget frame has not been initialized.',
+      );
+    }
+
+    this.framebus.emit(eventName, payload);
   }
 }
 

@@ -71,7 +71,7 @@ const flatConfig = [
         'error',
         {
           alphabetize: { caseInsensitive: true, order: 'asc' },
-          groups: ['builtin', 'external', 'parent', 'sibling'],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
           'newlines-between': 'always',
           pathGroups: [],
           pathGroupsExcludedImportTypes: ['builtin'],
