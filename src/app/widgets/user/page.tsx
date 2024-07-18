@@ -1,12 +1,14 @@
 'use client';
 
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 
 import { useFramebusContext } from '@components/providers';
 import { Box, Stack, styled } from '@panda/jsx';
 
 const UserWidgetPage: FunctionComponent = () => {
   const framebus = useFramebusContext();
+
+  const [userId, setUserId] = useState('');
 
   const handleClick = () => {
     console.info('emitting user.action event ...');
@@ -22,6 +24,7 @@ const UserWidgetPage: FunctionComponent = () => {
   useEffect(() => {
     framebus.on('user.get', ({ id }) => {
       console.info('user.get event fired with id', id);
+      setUserId(id);
     });
   }, [framebus]);
 
@@ -62,6 +65,7 @@ const UserWidgetPage: FunctionComponent = () => {
         >
           Action
         </styled.button>
+        <Box>UserId - {userId}</Box>
       </Box>
     </Stack>
   );
