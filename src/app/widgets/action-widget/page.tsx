@@ -1,3 +1,5 @@
+'use client';
+
 import { FunctionComponent } from 'react';
 
 import { Box, Stack, styled } from '@panda/jsx';
