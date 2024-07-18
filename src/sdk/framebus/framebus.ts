@@ -145,7 +145,7 @@ export class Framebus {
       payload: this.parsePayload(eventName, payload),
     };
 
-    this.targetWindow.postMessage(message, this.origin);
+    this.targetWindow.postMessage(message, '*'); //this.origin);
   }
 
   /**
