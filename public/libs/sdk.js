@@ -3928,11 +3928,11 @@
     "user.get": z.object({
       id: z.string()
     }),
-    "user.action": z.object({
-      type: z.string(),
-      payload: z.any()
-    }),
-    ready: z.undefined()
+    "user.actions.doStuff": z.any(),
+    ready: z.object({
+      bro: z.string(),
+      struff: z.number()
+    })
   };
 
   // src/sdk/framebus/error.ts
@@ -4215,6 +4215,5 @@
       this.framebus.emit(eventName, payload);
     }
   };
-  window.WidgetSdk = WidgetSdk;
   console.info("WidgetSdk loaded");
 })();
