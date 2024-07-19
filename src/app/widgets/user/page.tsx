@@ -12,12 +12,9 @@ const UserWidgetPage: FunctionComponent = () => {
 
   const handleClick = () => {
     console.info('emitting user.action event ...');
-    framebus.emit('user.action', {
-      type: 'yolo',
-      payload: {
-        bro: 'cool',
-        struff: 25,
-      },
+    framebus.emit('user.actions.doStuff', {
+      bro: 'cool',
+      struff: 25,
     });
   };
 

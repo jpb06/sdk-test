@@ -6,9 +6,9 @@ export const events = {
   'user.get': z.object({
     id: z.string(),
   }),
-  'user.action': z.object({
-    type: z.string(),
-    payload: z.any(),
+  'user.actions.doStuff': z.any(),
+  ready: z.object({
+    bro: z.string(),
+    struff: z.number(),
   }),
-  ready: z.undefined(),
 } satisfies FramebusEventMap;
