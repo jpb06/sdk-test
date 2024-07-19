@@ -80,5 +80,5 @@ export default class WidgetSdk {
   }
 }
 
-window.WidgetSdk = WidgetSdk;
+//window.WidgetSdk = WidgetSdk;
 console.info('WidgetSdk loaded');

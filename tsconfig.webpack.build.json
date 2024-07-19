@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "module": "ES2015",
+    "moduleResolution": "Bundler",
+    "noEmit": false,
+    "target": "ES5",
+    "verbatimModuleSyntax": false
+  },
+  "include": ["./src/sdk"]
+}
